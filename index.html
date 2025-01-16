@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="RLHS: Mitigating Misalignment in RLHF with Hindsight Simulation">
+  <meta name="keywords" content="Introspective planning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RLHS: Mitigating Misalignment in RLHF with Hindsight Simulation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/robot.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <!-- <b>RLHS: Mitigating Misalignment in RLHF with Hindsight Simulation</b> -->
+            <!-- <br> -->
+            <span style="font-size: 85%;">RLHS: Mitigating Misalignment in RLHF with Hindsight Simulation</span>
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="//kaiquliang.github.io">Kaiqu Liang</a>,</span>
+            <span class="author-block">
+              <a href="//haiminhu.org/">Haimin Hu</a>,</span>
+            <span class="author-block">
+              <a href="//theryanl.github.io/">Ryan Liu</a>,</span>
+            <span class="author-block">
+              <a href="//cocosci.princeton.edu/tom/tom.php">Thomas L. Griffiths</a>,</span>
+            <span class="author-block">
+              <a href="//saferobotics.princeton.edu/jaime">Jaime Fernández Fisac</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"> Princeton University</span>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2501.08617"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2501.08617"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/SafeRoboticsLab/RLHS?tab=readme-ov-file"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="./static/images/rlhs/RLHS_poster.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Poster</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered">
+      <div class="column is-one">
+        <h2 class="title is-3"> Phenomenon of misalignment</h2>
+        
+        <div class="content has-text-justified">
+          </p>
+        </div>
+        <img src="./static/images/rlhs/figure_2.png" alt="Descriptive Alt Text" style="max-width: 100%; height: auto;"> <br><br>
+        <h2 class="title is-5"> We found that RLHF induces systematic misalignment.</h2>
+
+        <img src="./static/images/rlhs/figure_3.png" alt="Descriptive Alt Text" style="max-width: 100%; height: auto;"> <br><br>
+
+        <h2 class="is-size-5"> Training AI on <b> immediate feedback </b> implicitly requires that users or evaluators <b> predict the future utility </b> of the AI output, which often depends on <b> downstream consequences</b>. This leads to <b> reward hacking </b>. </h2>
+
+        <h2 class="is-size-5">
+        <div class="content">
+          <ul>
+            <li>AI can improve its reward by <b> manipulating </b> the evaluator’s internal state (e.g., beliefs, emotions).</li>
+            <li>Manipulative AI outputs can bias users towards making poor decisions after the interaction.</li>
+          </ul>
+        </div>
+        </h2>
+      </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered">
+      <div class="column is-one">
+        <h2 class="title is-3"> Benefit of hindsight</h2>
+        
+        <div class="content has-text-justified">
+          <!-- <p>
+            We propose the concept of introspective planning as a systematic method for guiding LLMs in forming uncertainty--aware plans for robotic task execution without the need for fine-tuning. We investigate uncertainty quantification in task-level robot planning and demonstrate that introspection significantly improves both success rates and safety compared to state-of-the-art LLM-based planning approaches. Furthermore, we assess the effectiveness of introspective planning in conjunction with conformal prediction, revealing that this combination yields tighter confidence bounds, thereby maintaining statistical success guarantees with fewer superfluous user clarification queries.
+          </p> -->
+          </p>
+        </div>
+        <img src="./static/images/rlhs/figure_4.png" alt="Descriptive Alt Text" style="max-width: 100%; height: auto;"> <br><br>
+        <h2 class="is-size-5"> We introduced the <b> benefit of hindsight </b> and discussed theoretically that <b> conditioning evaluator feedback on downstream observations mitigates misalignment and improves expected human utility</b>. </h2> <br><br>
+
+        <img src="./static/images/rlhs/figure_5.png" alt="Descriptive Alt Text" style="max-width: 100%; height: auto;"> <br><br>
+
+        <h2 class="is-size-5"> To leverage this insight in a practical alignment algorithm, we introduce <b> Reinforcement Learning from Hindsight Simulation (RLHS) </b>. 
+
+          <div class="content">
+            <ul>
+              <li>Step 1: Simulates the consequences.</li>
+              <li>Step 2: Provides human feedback given the hindsight.</li>
+            </ul>
+          </div>
+
+        </h2>
+
+      </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered">
+        <div class="column is-one">
+          <h2 class="title is-3">Results</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              We demonstrate significant misalignment of real utility and satisfaction ratings using immediate feedback. 
+              Our proposed hindsight effectively mitigate the misalignment. <br>
+            </p>
+          </div>
+          <img src="./static/images/plot.png" alt="Descriptive Alt Text" style="max-width: 100%; height: auto;">
+          <br><br>
+          
+          <div class="content has-text-justified">
+            <p>
+            RLHF model (trained with immediate feedback) deceives by falsely claiming Options A and C meet the customer's 8K resolution requirement, though neither does. In contrast, the RLHS model truthfully states that none of the options include 8K resolution.            
+            </p>
+          </div>
+          <img src="./static/images/quality.png" alt="Descriptive Alt Text" style="max-width: 100%; height: auto;">
+          <br><br>
+
+          <h2 class="title is-5">Human study Results</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              RLHS significantly outperformed RLHF by achieving higher long-term satisfaction scores, higher true utility, and lower regret rates. 
+              
+              Models trained with RLHS are more truthful, presenting a strong correlation between their high immediate user satisfaction rate (subjective) and high true utility (objective).
+              <br>
+            </p>
+          </div>
+          <img src="./static/images/human_study_table.png" alt="Descriptive Alt Text" style="max-width: 100%; height: auto;">
+    </div>
+  </section>
+
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered">
+      <div class="column is-one">
+        <h2 class="title is-3">Applications of Hindsight</h2>
+
+        <div class="content has-text-justified">
+        </div>
+        <img src="./static/images/application2.jpeg" alt="Descriptive Alt Text" style="max-width: 100%; height: auto;">
+        <br><br>
+        
+  </div>
+</section>
+
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{liang2025rlhsmitigatingmisalignmentrlhf,
+      title={RLHS: Mitigating Misalignment in RLHF with Hindsight Simulation}, 
+      author={Kaiqu Liang and Haimin Hu and Ryan Liu and Thomas L. Griffiths and Jaime Fernández Fisac},
+      year={2025},
+      eprint={2501.08617},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2501.08617}, 
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer" style="padding-bottom: 1.5em; padding-top: 1.5em;">
+    <div class="container">
+      <div class="content has-text-centered">
+        <span>Website based on <a href="https://nerfies.github.io">Nerfies</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
